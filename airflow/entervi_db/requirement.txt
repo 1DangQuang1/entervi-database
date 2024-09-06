@@ -1,2 +1,0 @@
-mysql-connnector-python
-selenium
