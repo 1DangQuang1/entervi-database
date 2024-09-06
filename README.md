@@ -2,13 +2,16 @@
 
 This project involves creating an automated ETL pipeline to crawl manufacturer and product information from Alibaba.com, clean the data using SQL scripts, and upload it to a MySQL database and entervi.com via a REST API. Although the pipeline has run successfully, I’ve encountered challenges like handling Alibaba's CAPTCHA, which wasn’t an issue when I manually ran Entervi_db and Product_info on Windows machines. I’m using WSL (Windows Subsystem for Linux) to run Airflow commands which I consider not a good practice when too many commands have to be executed.Therefore,Im exploring Docker to reduce the need for manual intervention.
 
+![DAG](https://github.com/user-attachments/assets/a054ec6d-a034-4577-a123-a353f26ba520)
+
+
 # How the Pipeline Works
 1. **Data crawling**:
    
-   Selenium is used to automate the process of crawling manufacturer and product data from Alibaba.com.
-   The crawlers interact with the website as if they are real users, navigating through pages, and extracting relevant data such as manufacturer details, product specifications, etc.
+Selenium is used to automate the process of crawling manufacturer and product data from Alibaba.com.
+The crawlers interact with the website as if they are real users, navigating through pages, and extracting relevant data such as manufacturer details, product specifications, etc.
    
-   Now Im using batch processing for crawling product table which data can come up to 1500 each manufacturer. Therefore, I only ingest 2 links that is in company data each time.( It means that manufacturers crawlers (entervi_db) only run once, after that only product_info run )
+Now Im using batch processing for crawling product table which data can come up to 1500 each manufacturer. Therefore, I only ingest 2 links that is in company data each time.( It means that manufacturers crawlers (entervi_db) only run once, after that only product_info run ). I did it by create a offset file, each time product_info run, offset value will update
 
 3. **Data exporting to MySQL workbench**:
 
