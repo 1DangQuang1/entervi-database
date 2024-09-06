@@ -7,9 +7,10 @@ This project involves creating an automated ETL pipeline to crawl manufacturer a
    
    Selenium is used to automate the process of crawling manufacturer and product data from Alibaba.com.
    The crawlers interact with the website as if they are real users, navigating through pages, and extracting relevant data such as manufacturer details, product specifications, etc.
-   Now Im using batch processing for crawling product table which data can come up to 1500 each manufacturer. Therefore, I only ingest 2 links that is in company data each time.
+   
+   Now Im using batch processing for crawling product table which data can come up to 1500 each manufacturer. Therefore, I only ingest 2 links that is in company data each time.( It means that manufacturers crawlers (entervi_db) only run once, after that only product_info run )
 
-2. **Data exporting to MySQL workbench**:
+3. **Data exporting to MySQL workbench**:
 
 Extracted data is processed and exported into a MySQL database using the mysql-connector-python library.
 Separate tables are used for manufacturer and product information, ensuring clean data organization.
