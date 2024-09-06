@@ -78,7 +78,7 @@ To run this project, you'll need:
 
    You can now access Airflow at `http://localhost:8080` to monitor and trigger the ETL pipeline.
 
-
+Manually : You can copy the DAG file ( data_crawl_pipeline.py) to airflow/dags so that scheduler can work without error.
 ## Contributions
 
 Feel free to fork this repository and submit pull requests for any improvements. You can also open issues for bug reports or feature requests.
