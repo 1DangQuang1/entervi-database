@@ -39,6 +39,7 @@ The upload process is handled by the Upload folder, where the main.py script sen
 To run this project, you'll need:
 
 - **Python 3.8+**
+- **Apache Airflow**
 - **MySQL 5.7+**
 - **Selenium**: Used for web scraping with Chrome WebDriver.
 - **MySQL Connector**: Python library to interact with MySQL.
