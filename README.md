@@ -23,14 +23,10 @@ Separate tables are used for manufacturer and product information, ensuring clea
 SQL scripts located in the Clean folder are used to clean and process the data.
 These scripts remove duplicates, filter irrelevant data, and standardize the format before final upload.
 
-4. **Data uploading**:
+4. **Data uploading**: (This part contains authentication of entervi.com, therefore I decide not to push it into github)
 
 The cleaned data is uploaded to entervi.com using its REST API.
 The upload process is handled by the Upload folder, where the main.py script sends the cleaned data to the website via HTTP POST requests.
-Orchestration with Apache Airflow:
-
-The entire process is scheduled and orchestrated using Apache Airflow.
-The data_crawl_pipeline.py DAG (Directed Acyclic Graph) defines the sequence of tasks—crawling data, cleaning data, and uploading the cleaned data—ensuring everything runs smoothly and on time.
 
 5. **Orchestration with Apache Airflow**:
    - The entire process is scheduled and orchestrated using **Apache Airflow**.
