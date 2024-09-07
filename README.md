@@ -2,8 +2,6 @@
 
 This project involves creating an automated ETL pipeline to crawl manufacturer and product information from Alibaba.com, clean the data using SQL scripts, and upload it to a MySQL database and entervi.com via a REST API. Although the pipeline has run successfully, I’ve encountered challenges like handling Alibaba's CAPTCHA, which wasn’t an issue when I manually ran Entervi_db and Product_info on Windows machines. I’m using WSL (Windows Subsystem for Linux) to run Airflow commands which I consider not a good practice when too many commands have to be executed.Therefore,Im exploring Docker to reduce the need for manual intervention.
 
-![DAG](https://github.com/user-attachments/assets/a054ec6d-a034-4577-a123-a353f26ba520)
-
 
 # How the Pipeline Works
 1. **Data crawling**:
@@ -37,6 +35,8 @@ The data_crawl_pipeline.py DAG (Directed Acyclic Graph) defines the sequence of 
 5. **Orchestration with Apache Airflow**:
    - The entire process is scheduled and orchestrated using **Apache Airflow**.
    - The `data_crawl_pipeline.py` DAG (Directed Acyclic Graph) defines the sequence of tasks—crawling data, cleaning data, and uploading the cleaned data—ensuring everything runs smoothly and on time.
+
+![DAG](https://github.com/user-attachments/assets/a054ec6d-a034-4577-a123-a353f26ba520)
 
 ## Prerequisites
 
