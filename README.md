@@ -11,7 +11,7 @@ The crawlers interact with the website as if they are real users, navigating thr
    
 Now Im using batch processing for crawling product table which data can come up to 1500 each manufacturer. Therefore, I only ingest 2 links that is in company data each time.( It means that manufacturers crawlers (entervi_db) only run once, after that only product_info run ). I did it by create a offset file, each time product_info run, offset value will update
 
-3. **Data exporting to MySQL workbench**:
+2. **Data exporting to MySQL workbench**:
 
 Extracted data is processed and exported into a MySQL database using the mysql-connector-python library.
 Separate tables are used for manufacturer and product information, ensuring clean data organization.
