@@ -1,25 +1,19 @@
-# Use the official Apache Airflow Docker image
 FROM apache/airflow:2.5.1-python3.9
 
-# Install necessary libraries for MySQL and other dependencies
+# Install necessary libraries for MySQL and any other dependencies
 USER root
-RUN apt-get update && \
-    apt-get install -y mysql-client libmysqlclient-dev && \
-    pip install mysql-connector-python pendulum
+RUN apt-get update && apt-get install -y mysql-client libmysqlclient-dev
 
-# Set environment variables for Airflow
+# Set the Airflow home directory and copy necessary files
 ENV AIRFLOW_HOME=/opt/airflow
-ENV PYTHONPATH=${PYTHONPATH}:${AIRFLOW_HOME}/dags
 
-# Copy your DAGs into the Airflow dags directory
+# Copy your DAGs and SQL scripts to the container
 COPY dags /opt/airflow/dags
 COPY sql_scripts /opt/airflow/sql_scripts
 
-# Set ownership and permissions for the airflow user
-RUN chown -R airflow: ${AIRFLOW_HOME}
+# Copy the entrypoint.sh script to the container and give it executable permissions
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-USER airflow
-
-# Entry point to run Airflow scheduler and webserver
-ENTRYPOINT ["/entrypoint"]
-CMD ["webserver"]
+# Set the custom entrypoint script
+ENTRYPOINT ["/entrypoint.sh"]
