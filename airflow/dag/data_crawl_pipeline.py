@@ -36,13 +36,13 @@ with DAG(
     @task
     def run_company_crawler():
         base_dir, python_interpreter = get_base_dir_and_python_interpreter()
-        company_crawler_flag = os.path.join(base_dir, 'Entervi_db', 'db', 'company_crawler_done.txt')
+        company_crawler_flag = os.path.join(base_dir, 'entervi_db', 'db', 'company_crawler_done.txt')
 
         logging.info(f"Running company crawler with base_dir={base_dir}")
         
         if not os.path.exists(company_crawler_flag):
             logging.info("Company crawler not yet completed, running crawler...")
-            result = subprocess.run([python_interpreter, os.path.join(base_dir, 'Entervi_db', 'main.py')], 
+            result = subprocess.run([python_interpreter, os.path.join(base_dir, 'entervi_db', 'main.py')], 
                                     capture_output=True, text=True)
             logging.info(f"Company crawler output: {result.stdout}")
             if result.returncode != 0:
@@ -61,7 +61,7 @@ with DAG(
     def run_product_crawler():
         base_dir, python_interpreter = get_base_dir_and_python_interpreter()
         logging.info(f"Running product crawler with base_dir={base_dir}")
-        result = subprocess.run([python_interpreter, os.path.join(base_dir, 'Product_info', 'main.py')], 
+        result = subprocess.run([python_interpreter, os.path.join(base_dir, 'product_info', 'main.py')], 
                                 capture_output=True, text=True)
         logging.info(f"Product crawler output: {result.stdout}")
         if result.returncode != 0:
@@ -84,16 +84,16 @@ with DAG(
                 logging.info("Running data cleaner...")
 
                 base_dir, _ = get_base_dir_and_python_interpreter()
-                company_crawler_flag = os.path.join(base_dir, 'Entervi_db', 'db', 'company_crawler_done.txt')
+                company_crawler_flag = os.path.join(base_dir, 'entervi_db', 'db', 'company_crawler_done.txt')
                 
                 if not os.path.exists(company_crawler_flag):
-                    with open(os.path.join(base_dir, 'Clean', 'company_data_clean.sql'), 'r') as f:
+                    with open(os.path.join(base_dir, 'SQL_Scripts_for_cleaning_data', 'company_data_clean.sql'), 'r') as f:
                         script = f.read()
                     for statement in script.split(';'):
                         if statement.strip():
                             cursor.execute(statement)
 
-                with open(os.path.join(base_dir, 'Clean', 'product_data_clean.sql'), 'r') as f:
+                with open(os.path.join(base_dir, 'SQL_Scripts_for_cleaning_data', 'product_data_clean.sql'), 'r') as f:
                     script = f.read()
                 for statement in script.split(';'):
                     if statement.strip():
