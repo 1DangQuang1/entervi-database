@@ -42,45 +42,61 @@ To run this project, you'll need:
 - **Python 3.8+**
 - **Apache Airflow**
 - **MySQL 5.7+**
+- **Docker Desktop**
 - **Selenium**: Used for web scraping with Chrome WebDriver.
 - **MySQL Connector**: Python library to interact with MySQL.
 - **entervi.com API credentials**: Necessary for uploading data via the REST API.
 
 ## Setup Instructions
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/etl-entervi.git
-   cd etl-entervi
-   ```
+#### Step 1: Clone the Repository
 
-2. **Install dependencies**:
-   Install the required Python packages listed in the `requirements.txt` file:
-   ```bash
-   pip install -r requirements.txt
-   ```
+Clone this repository to your local machine.
 
-3. **MySQL Setup**:
-   Make sure MySQL is running and create the necessary database:
-   ```sql
-   CREATE DATABASE alibaba_db;
-   ```
+```bash
+git clone <repository-url>
+cd <project-directory>
+```
 
-4. **Run Airflow (Optional but Recommended)**:
-   You can orchestrate the entire pipeline using Airflow. To start Airflow, first initialize the Airflow database:
-   ```bash
-   airflow db init
-   ```
+#### Step 2: Build the Docker Image
 
-   Then, start the scheduler and webserver:
-   ```bash
-   airflow scheduler &
-   airflow webserver
-   ```
+Build the Docker images for the project, which will include all dependencies like Airflow, MySQL, and other necessary libraries.
 
-   You can now access Airflow at `http://localhost:8080` to monitor and trigger the ETL pipeline.
+```bash
+docker-compose build
+```
 
-Manually : You can copy the DAG file ( data_crawl_pipeline.py) to airflow/dags so that scheduler can work without error.
+#### Step 3: Start the Airflow and MySQL Services
+
+Once the Docker images are built, you can start the Airflow and MySQL services using Docker Compose.
+
+```bash
+docker-compose up -d
+```
+
+- This command will run the services in the background.
+- Airflow's web interface will be accessible at `http://localhost:8080`.
+- MySQL will run on `localhost:3306` with the database `alibaba_db`.
+
+#### Step 4: Access the Airflow Web Interface
+
+To monitor and trigger the DAGs, visit the Airflow web interface by navigating to `http://localhost:8080` in your web browser. Use the default login credentials:
+
+- **Username**: airflow
+- **Password**: airflow
+
+#### Step 5: Trigger the DAG
+
+In the Airflow web interface, you should see your DAG (`data_crawl_pipeline`). You can manually trigger the DAG or let it run on its daily schedule.
+
+#### Step 6: Stop the Services
+
+When you're done, you can stop the Docker services using:
+
+```bash
+docker-compose down
+```
+
 ## Contributions
 
 Feel free to fork this repository and submit pull requests for any improvements. You can also open issues for bug reports or feature requests.
