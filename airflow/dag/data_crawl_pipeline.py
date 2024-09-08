@@ -76,7 +76,7 @@ with DAG(
             connection = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="quangci112",
+                password="Quangci@123",
                 database="alibaba_db"
             )
             if connection.is_connected():

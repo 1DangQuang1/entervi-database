@@ -1,3 +1,4 @@
+use alibaba_db;
 SET SQL_SAFE_UPDATES = 0;
 WITH DUPLICATE AS (
 	SELECT id, product_link, product_name, 

@@ -1,3 +1,4 @@
+use alibaba_db;
 select	 * from product_data;
 select * from company_data;
 SET SQL_SAFE_UPDATES = 0;
