@@ -36,13 +36,13 @@ with DAG(
     @task
     def run_company_crawler():
         base_dir, python_interpreter = get_base_dir_and_python_interpreter()
-        company_crawler_flag = os.path.join(base_dir, 'entervi_db', 'db', 'company_crawler_done.txt')
+        company_crawler_flag = os.path.join(base_dir, 'entervi.com_db', 'db', 'company_crawler_done.txt')
 
         logging.info(f"Running company crawler with base_dir={base_dir}")
         
         if not os.path.exists(company_crawler_flag):
             logging.info("Company crawler not yet completed, running crawler...")
-            result = subprocess.run([python_interpreter, os.path.join(base_dir, 'entervi_db', 'main.py')], 
+            result = subprocess.run([python_interpreter, os.path.join(base_dir, 'entervi.com_db', 'main.py')], 
                                     capture_output=True, text=True)
             logging.info(f"Company crawler output: {result.stdout}")
             if result.returncode != 0:
