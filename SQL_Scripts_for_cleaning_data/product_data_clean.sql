@@ -11,3 +11,5 @@ where id in ( select id from DUPLICATE where RN > 1 );
 UPDATE product_data
 SET product_price = 0
 WHERE product_price IS NULL;
+
+SET SQL_SAFE_UPDATES = 1;
