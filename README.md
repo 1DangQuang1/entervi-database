@@ -32,7 +32,8 @@ The upload process is handled by the Upload folder, where the main.py script sen
    - The entire process is scheduled and orchestrated using **Apache Airflow**.
    - The `data_crawl_pipeline.py` DAG (Directed Acyclic Graph) defines the sequence of tasks—crawling data, cleaning data, and uploading the cleaned data—ensuring everything runs smoothly and on time.
 
-![DAG](https://github.com/user-attachments/assets/a054ec6d-a034-4577-a123-a353f26ba520)
+![DAG](https://github.com/user-attachments/assets/88763f4e-0fed-40c4-8fe1-13d416b7c09b)
+
 
 ## Prerequisites
 
