@@ -24,7 +24,7 @@ def scrape_all_pages(driver, base_url, link_id, start_id=1, max_pages=100):
         try:
             paginated_url = base_url + f"&&page={page}"
             driver.get(paginated_url)
-            time.sleep(3)  
+            time.sleep(5)  
             
             if "No results found" in driver.page_source:
                 break
