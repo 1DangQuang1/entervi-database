@@ -1,4 +1,4 @@
-# ETL Pipeline for Data Ingestion Preparing Entervi.com Database
+# ETL Pipeline for Data Migrating to Entervi.com Database
 
 This project involves creating an automated ETL pipeline to crawl manufacturer and product information from Alibaba.com, clean the data using SQL scripts, and upload it to a MySQL database and entervi.com via a REST API. Although the pipeline has run successfully, I’ve encountered challenges like handling Alibaba's CAPTCHA, which wasn’t an issue when I manually ran Entervi_db and Product_info on Windows machines. I’m using WSL (Windows Subsystem for Linux) to run Airflow commands which I consider not a good practice when too many commands have to be executed.Therefore,Im exploring Docker to reduce the need for manual intervention.
 
