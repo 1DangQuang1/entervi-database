@@ -17,3 +17,5 @@ RUN chmod +x /entrypoint.sh
 
 # Set the custom entrypoint script
 ENTRYPOINT ["/entrypoint.sh"]
+# Run airflow schedular and airflow webserver 
+CMD ["webserver"]

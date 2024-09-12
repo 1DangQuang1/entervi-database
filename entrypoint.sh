@@ -18,4 +18,4 @@ airflow users create \
 
 # Start the Airflow webserver
 echo "Starting Airflow webserver..."
-exec airflow webserver --port 8080
+airflow webserver & airflow scheduler
