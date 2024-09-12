@@ -1,8 +1,6 @@
-#!/usr/bin/env bash
-
 # Wait for the database to be ready
 echo "Waiting for the database to be ready..."
-sleep 10  # Tăng thời gian chờ nếu cần, tùy thuộc vào độ chậm của việc khởi động database.
+sleep 10
 
 # Initialize the Airflow database
 echo "Initializing Airflow database..."
@@ -20,4 +18,4 @@ airflow users create \
 
 # Start the Airflow webserver
 echo "Starting Airflow webserver..."
-exec airflow webserver
+exec airflow webserver --port 8080
