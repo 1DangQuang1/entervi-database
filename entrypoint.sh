@@ -1,6 +1,6 @@
 # Wait for the database to be ready
 echo "Waiting for the database to be ready..."
-sleep 10
+sleep 10  # Tăng thời gian chờ nếu cần, tùy thuộc vào độ chậm của việc khởi động database.
 
 # Initialize the Airflow database
 echo "Initializing Airflow database..."
