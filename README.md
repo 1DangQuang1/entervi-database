@@ -25,7 +25,7 @@ These scripts remove duplicates, filter irrelevant data, and standardize the for
 
 4. **Data uploading**: (This part contains authentication of entervi.com, therefore I decide not to push it into github)
 
-The cleaned data is uploaded to entervi.com using its REST API.
+The cleaned data is uploaded to entervi.com using its WooCommerce REST API.
 The upload process is handled by the Upload folder, where the main.py script sends the cleaned data to the website via HTTP POST requests.
 
 5. **Orchestration with Apache Airflow**:
